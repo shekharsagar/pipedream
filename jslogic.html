@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<script></script>
+<script>
+function validateWeight()
+{
+console.log('i am here');
+	    var Priority =[]
+	    var Weight =[]
+		var notH=true;
+	    //var Priority = document.querySelectorAll("priority");
+	    //var Weight =  document.querySelectorAll("ChangeWeight");
+var Priority =document.getElementsByName("priority");
+
+for(var i = 0; i < Priority.length; i++) {
+console.log('i am in for');
+
+  console.log(Priority[i].value);
+} 
+var Weight =document.getElementsByName("ChangeWeight");
+
+for(var i =0; i < Weight.length; i++) {
+console.log('i am in for weight');
+
+  console.log(Weight[i].value);
+} 
+	    var size = Priority.length;
+		console.log('size is'+size);
+	    var arr = new Array(size);
+	    for (var i = 0; i < arr.length; i++)
+	    {
+	     arr[i] = new Array(2);
+	    }
+	        var count = 0;
+	     for (var i = 0; i < size; i++) 
+	        {
+	        var imatch = false;
+	         if (i !== 0) {
+	          for (var k = i - 1; k >= 0; k--) 
+	          {
+	            if (Priority[k].value == Priority[i].value) {
+			
+				  arr[k][1] = parseInt(arr[k][1]) + parseInt( Weight[i].value);
+				  //arr.splice(i,2);
+				 // arr[i][0] = 0;
+				  arr[i][1] = 0;
+				  //arr[i][1] = parseInt(arr[i][1]) *  0; 
+				  
+				  console.log("plus wale mein" + " " + arr[k][1]);
+	              imatch = true;
+	              count++;
+	          }
+	            else {
+					
+				}
+	                }
+	              }
+	           if (!imatch) {
+	            for (var j = 0; j < 2; j++) 
+	           {
+	             if (j == 1) {
+				  arr[i][j] = Weight[i].value;
+				  console.log( "chweight wale mein" + arr[i][j]);
+	           }
+	           else {
+					  arr[i][j] = Priority[i].value;
+					  console.log( "pri wale mein"+arr[i][j]);
+					}
+				}
+			}
+		}
+
+		console.table(arr);
+
+// 		for(var i = 0; i < size; i++) {
+//   for(var j = 0; j < 2; j++) {
+//     console.log(arr[i][j]);
+//   }
+// }
+
+		
+	                              	for (var i = 0; i < size; i++) {
+								
+	                             if(arr[i][1] != 100 && arr[i][0] != 0) {
+	                                 //System.out.print("false ");
+	                            	 notH=false;
+	                            	 //pop up
+	                            	 alert('Sum for particular Priority'+arr[i][0]+' need to be 100');	                            	 
+	                            	 return;
+	                          }	
+	                          else {
+	                                //System.out.print("true ");
+	      										 alert('waaah kya baat');	      
+							  }
+							  
+									  }
+									//  alert('waaah kya baat');	
+	     }
+</script>
+
+<body>
+<form>
+<input type="text"  id="priority1" name="priority"  value="10">
+
+<input type="text"  id="priority2" name="priority"  value="20" >
+
+<input type="text"  id="priority3" name="priority"  value="10" >
+
+<input type="text"  id="priority4" name="priority" value="20">
+
+<input type="text"  id="ChangeWeight1" name="ChangeWeight" class='txtCal' value="20">
+<input type="text"  id="ChangeWeight2"  name="ChangeWeight" class='txtCal' value="70">
+<input type="text"  id="ChangeWeight3" name="ChangeWeight"  class='txtCal' value="60">
+<input type="text"  id="ChangeWeight4" name="ChangeWeight"  class='txtCal' value="20">
+
+<input type="button"  onclick="validateWeight()" value="submit">
+</form>
+</body>
+</html>
